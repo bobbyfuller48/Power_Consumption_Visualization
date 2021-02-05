@@ -4,9 +4,12 @@ library(lubridate)
 # download / unzip file
 file_url <- 'https://archive.ics.uci.edu/ml/machine-learning-databases/00235/household_power_consumption.zip'
 
-download.file(file_url, destfile = 'power_consumption.zip', 
-              method = 'curl')
-unzip(zipfile = 'power_consumption.zip')
+if(!file.exists('power_consumption.zip'))
+{
+  download.file(file_url, destfile = 'power_consumption.zip', 
+                method = 'curl')
+  unzip(zipfile = 'power_consumption.zip') 
+}
 
 # reads data, replacing '?' with NA
 table <- read_delim('household_power_consumption.txt', delim = ';', 
@@ -41,7 +44,7 @@ plot(table$Date_time, table$Global_active_power, type = 'l',
 
 # plot 2 'Voltage' (Time Series)
 plot(table$Date_time, table$Voltage, type = 'l', 
-     ylab = 'Voltage', cex.axis = 0.8, cex.lab = 0.8) 
+     ylab = 'Voltage', xlab = '', cex.axis = 0.8, cex.lab = 0.8) 
 
 # plot 3 'Energy sub metering' (Time Series)
 plot(table$Date_time, table$Sub_metering_1, type = 'l',
@@ -51,9 +54,9 @@ lines(table$Date_time, table$Sub_metering_2, col = 'red')
 lines(table$Date_time, table$Sub_metering_3, col = 'blue')
 legend("topright",col=c("black","red","blue"),
        c("Sub_metering_1","Sub_metering_2", "Sub_metering_3"), lty = 1, 
-       cex = 0.4, xjust = 1) 
+       cex = 0.2) 
 
 #plot 4 'Global_reactive_power' (Time Series)
 plot(table$Date_time, table$Global_reactive_power, type = 'l', 
-     ylab = 'Global Reactive Power', cex.axis = 0.8, 
+     ylab = 'Global Reactive Power', xlab = '', cex.axis = 0.8, 
      cex.lab = 0.8) 
