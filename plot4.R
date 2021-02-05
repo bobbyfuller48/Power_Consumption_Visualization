@@ -1,6 +1,13 @@
 library(tidyverse)
 library(lubridate)
 
+# download / unzip file
+file_url <- 'https://archive.ics.uci.edu/ml/machine-learning-databases/00235/household_power_consumption.zip'
+
+download.file(file_url, destfile = 'power_consumption.zip', 
+              method = 'curl')
+unzip(zipfile = 'power_consumption.zip')
+
 # reads data, replacing '?' with NA
 table <- read_delim('household_power_consumption.txt', delim = ';', 
                     na = c('?', 'NA', ''), 
