@@ -34,10 +34,10 @@ table <- table %>%
 # create/annotate graph
 par(mfrow = c(1,1))
 plot(table$Date_time, table$Sub_metering_1, type = 'l',
-     xlab = '', ylab = 'Energy sub metering', cex.lab = 0.8, 
+     xlab = '', ylab = 'Energy Sub Metering (Wh)', cex.lab = 0.8, 
      cex.axis = 0.8)
 lines(table$Date_time, table$Sub_metering_2, col = 'red')
 lines(table$Date_time, table$Sub_metering_3, col = 'blue')
 legend("topright",col=c("black","red","blue") ,
-       c("Sub_metering_1  ","Sub_metering_2  ", "Sub_metering_3  "), lty = 1, 
-       cex = 0.6)
+       c("Sub Metering 1","Sub Metering 2 ", "Sub Metering 3"), lty = 1, 
+       cex = 0.8, xjust = 1)

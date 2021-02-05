@@ -35,28 +35,28 @@ table <- table %>%
 # create/annotate graphs
 
 # specify global graphics parameters 
-par(mfrow = c(2,2)) 
+par(mfrow = c(2,2), mar = c(3,4,2,2)) 
 
 # plot 1 'Global Active Power' (Time Series)
 plot(table$Date_time, table$Global_active_power, type = 'l', 
-     xlab = '', ylab = 'Global Active Power', cex.axis = 0.8,
+     xlab = '', ylab = 'Global Active Power (KW)', cex.axis = 0.8,
      cex.lab = 0.8) 
 
 # plot 2 'Voltage' (Time Series)
 plot(table$Date_time, table$Voltage, type = 'l', 
-     ylab = 'Voltage', xlab = '', cex.axis = 0.8, cex.lab = 0.8) 
+     ylab = 'Voltage (V)', xlab = '', cex.axis = 0.8, cex.lab = 0.8) 
 
 # plot 3 'Energy sub metering' (Time Series)
 plot(table$Date_time, table$Sub_metering_1, type = 'l',
-     xlab = '', ylab = 'Energy Sub Metering', cex.lab = 0.8, 
+     xlab = '', ylab = 'Energy Sub Metering (Wh)', cex.lab = 0.8, 
      cex.axis = 0.8)
 lines(table$Date_time, table$Sub_metering_2, col = 'red')
 lines(table$Date_time, table$Sub_metering_3, col = 'blue')
 legend("topright",col=c("black","red","blue"),
-       c("Sub_metering_1","Sub_metering_2", "Sub_metering_3"), lty = 1, 
-       cex = 0.2) 
+       c("Sub Metering 1","Sub Metering 2", "Sub Metering 3"), lty = 1, 
+       cex = 0.4, xjust = 1) 
 
 #plot 4 'Global_reactive_power' (Time Series)
 plot(table$Date_time, table$Global_reactive_power, type = 'l', 
-     ylab = 'Global Reactive Power', xlab = '', cex.axis = 0.8, 
+     ylab = 'Global Reactive Power (KW)', xlab = '', cex.axis = 0.8, 
      cex.lab = 0.8) 
